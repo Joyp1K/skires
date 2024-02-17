@@ -61,6 +61,11 @@ namespace skires
                                     f4.Show();
                                     this.Hide();
                                     break;
+                                case "Прокат":
+                                    Form5 f5 = new Form5();
+                                    f5.Show();
+                                    this.Hide();
+                                    break;
 
                                 default:
                                     MessageBox.Show("Траблы.");
