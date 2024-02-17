@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace skires
 {
     public partial class Form1 : Form
     {
-        private const string ConnectionString = "Host=localhost;Port=5432;Database=***;Username=postgres;Password=***";
+        private const string ConnectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
         public Form1()
         {
             InitializeComponent();
@@ -24,39 +26,53 @@ namespace skires
             string userName = textBox1.Text;
             string password = textBox2.Text;
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+
+            using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString))
             {
                 connection.Open();
-
-                string query = "SELECT *** FROM *** WHERE *** = @username AND *** = @password";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string query = "SELECT dolgnost FROM staff WHERE role = @username AND password = @password";
+                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@username", userName);
                     command.Parameters.AddWithValue("@password", password);
-
-                    string userType = command.ExecuteScalar().ToString();
-            switch (userType)
+                                        
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        case "*":
-                            Form2 a1 = new Form2();
-                            a1.Show();
-                            break;
-                        case "**":
-                            Form3 a2 = new Form3();
-                            a2.Show();
-                            break;
-                        case "***":
-                            Form4 a3 = new Form4();
-                            a3.Show();
-                            break;
-                        case "****":
-                            Form5 a4 = new Form5();
-                            a4.Show();
-                            break;
-                        default:
-                            MessageBox.Show("Неверный логин или пароль");
-                            break;
+                        if (reader.Read())
+                        {
+                            string dolgnost = reader.GetString(0);
+
+                            switch (dolgnost)
+                            {
+                                case "Администратор":
+                                    Form2 f2 = new Form2();
+                                    f2.Show();
+                                    this.Hide();
+                                    break;
+
+                                case "Менеджер":
+                                    Form3 f3 = new Form3();
+                                    f3.Show();
+                                    this.Hide();
+                                    break;
+
+                                case "Руководитель":
+                                    Form4 f4 = new Form4();
+                                    f4.Show();
+                                    this.Hide();
+                                    break;
+
+                                default:
+                                    MessageBox.Show("Траблы.");
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверный логин или пароль.");
+                        }
                     }
+
                 }
             }
         }
