@@ -25,8 +25,6 @@ namespace skires
         {
             string userName = textBox1.Text;
             string password = textBox2.Text;
-
-
             using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString))
             {
                 connection.Open();

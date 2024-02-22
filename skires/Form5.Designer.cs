@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form5";
             this.Text = "(прокатная)";
+            this.Load += new System.EventHandler(this.Form5_Load);
             this.ResumeLayout(false);
 
         }
