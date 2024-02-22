@@ -173,6 +173,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "Ввести";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -183,6 +184,7 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Обновить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -193,6 +195,7 @@
             this.button3.TabIndex = 16;
             this.button3.Text = "Выход";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tabPage4
             // 
@@ -294,8 +297,6 @@
             this.Name = "Form3";
             this.Text = "(менеджерская)";
             this.Load += new System.EventHandler(this.Form3_Load);
-<<<<<<< HEAD
-=======
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -303,7 +304,6 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
->>>>>>> сотрудники
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -21,9 +21,7 @@ namespace skires
 
         private void Form3_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
-=======
             var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
             connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
@@ -155,7 +153,6 @@ namespace skires
                         MessageBox.Show("Данные все введены.");
                     }
                 }
->>>>>>> сотрудники
         }
     }
 }
