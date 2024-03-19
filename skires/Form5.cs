@@ -16,7 +16,7 @@ namespace skires
     public partial class Form5 : Form
 
     {
-        private const string ConnectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=1234";
+        private const string ConnectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
         public Form5()
         {
             InitializeComponent();
@@ -499,6 +499,13 @@ namespace skires
         private void tabPage4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form a1 = new Form1();
+            a1.Show();
+            this.Hide();
         }
     }
 

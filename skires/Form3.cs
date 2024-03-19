@@ -22,12 +22,12 @@ namespace skires
         private void Form3_Load(object sender, EventArgs e)
         {
 
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
+            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=5958");
             connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
-                using (var command = new NpgsqlCommand("select suename,the_capt,tip_number,surname,data_beginn,data_end,price from services,staff,client,booking,inventory where services.id_staff=staff.id_staff and services.id_client=client.id_client and services.id_booking=booking.id_booking and inventory.id_inventory=services.id_inventory", conn))
+                using (var command = new NpgsqlCommand("select suename as \"Клиент\",the_capt as \"Инвентарь\",tip_number \"Уровень комнаты\",surname as \"Сотрудник\",data_beginn \"Дата приезда\",data_end \"Дата отъезда\",price \"Стоимость\"\r\nfrom services,staff,client,booking,inventory \r\nwhere services.id_staff=staff.id_staff \r\nand services.id_client=client.id_client \r\nand services.id_booking=booking.id_booking \r\nand inventory.id_inventory=services.id_inventory", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -91,12 +91,14 @@ namespace skires
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Close();
+            Form a1 = new Form1();
+            a1.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
+            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=5958");
             connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {

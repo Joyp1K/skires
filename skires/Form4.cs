@@ -35,7 +35,7 @@ namespace skires
 {
     public partial class Form4 : Form
     {
-        string connectionString = " Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff";
+        string ConnectionString = " Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
         public Form4()
         {
             InitializeComponent();
@@ -53,7 +53,7 @@ namespace skires
         {
 
 
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
             string searchValue = textBox1.Text;
             string baseFileName;
             if (string.IsNullOrWhiteSpace(searchValue))
@@ -65,7 +65,7 @@ namespace skires
                 baseFileName = "C:\\Users\\Алина\\Desktop\\проект надаль\\отчёт_за_" + searchValue;
             }
             string fileName = baseFileName + ".xlsx";
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString))
             {
                 connection.Open();
                 string query = "SELECT client.suename, client.name, client.otchestvo, inventory.the_capt, booking.tip_number, staff.surname, staff.name, staff.otchesto, data_beginn, data_end, price " +
@@ -286,7 +286,7 @@ namespace skires
             try
             {
                 // Создание подключения к базе данных PostgreSQL
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;"))
+                using (var connection = new NpgsqlConnection(ConnectionString))
                 {
                     connection.Open();
                     // Проверка наличия такого же пароля в базе данных
@@ -334,7 +334,7 @@ namespace skires
             try
             {
                 // Создание подключения к базе данных PostgreSQL
-                using (var connection = new NpgsqlConnection("Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;"))
+                using (var connection = new NpgsqlConnection(ConnectionString))
                 {
                     connection.Open();
                     // Проверка наличия такого же пароля в базе данных
@@ -418,13 +418,13 @@ namespace skires
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
             string query = "SELECT surname, name, otchesto,\r\n" +
                 "  SUM(price),\r\n " +
                 "      COUNT(id_client) FROM\r\n  " +
                 "  public.services join public.staff on staff.id_staff= services.id_staff\r\n" +
                 "WHERE data_end LIKE '%' || @input || '%' GROUP BY surname, name, otchesto ";
-            NpgsqlConnection conn = new NpgsqlConnection(connectionString);
+            NpgsqlConnection conn = new NpgsqlConnection(ConnectionString);
             Application winword = new Application();
             winword.Visible = false;
             conn.Open();
@@ -493,7 +493,7 @@ namespace skires
         {
             if (dataGridView1.Visible)
             {
-
+                    
                 dataGridView1.Visible = false;
              // button6.Visible = false;
             }
@@ -503,7 +503,7 @@ namespace skires
                 dataGridView1.Visible = true;
               //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "select client.suename, client.name, client.otchestvo, inventory.the_capt, services.data_beginn," +
                 " services.data_end, services.price, booking.tip_number from services inner join client on" +
@@ -511,7 +511,7 @@ namespace skires
                 " inner join booking on booking.id_booking= services.id_booking WHERE suename LIKE '%' || @input || '%'";
             string input = textBox7.Text; // Получаем ввод из текстового поля
 
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConnectionString))
             {
                 conn.Open();
 
@@ -619,13 +619,13 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "select dolgnost, surname, name, otchesto, qualification,  telefon, adrress, zp FROM staff WHERE dolgnost LIKE '%' || @input || '%'";
 
             string input = textBox8.Text; // Получаем ввод из текстового поля
 
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConnectionString))
             {
                 conn.Open();
 
@@ -683,13 +683,13 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "select surname, name, otchesto, dolgnost, qualification,  telefon, adrress, zp FROM staff WHERE surname LIKE '%' || @input || '%'";
 
             string input = textBox8.Text; // Получаем ввод из текстового поля
 
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConnectionString))
             {
                 conn.Open();
 
@@ -747,13 +747,13 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "SELECT client.suename, client.name, client.otchestvo, inventory.the_capt, booking.tip_number, staff.surname, staff.name, staff.otchesto, data_beginn, data_end, price " +
                                "FROM services JOIN client ON client.id_client = services.id_client JOIN inventory ON inventory.id_inventory = services.id_inventory JOIN booking ON booking.id_booking = services.id_booking JOIN staff ON staff.id_staff = services.id_staff WHERE data_end  LIKE '%' || @input || '%'";
             string input = textBox1.Text; // Получаем ввод из текстового поля
 
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConnectionString))
             {
                 conn.Open();
 
@@ -817,7 +817,7 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "SELECT surname, name, otchesto,\r\n" +
                 "  SUM(price),\r\n " +
@@ -826,7 +826,7 @@ namespace skires
                 "WHERE data_end LIKE '%' || @input || '%' GROUP BY surname, name, otchesto";
             string input = textBox2.Text; // Получаем ввод из текстового поля
 
-            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConnectionString))
             {
                 conn.Open();
 
