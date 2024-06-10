@@ -79,5 +79,15 @@ namespace skires.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Снимок_экрана_2024_06_10_092108 {
+            get {
+                object obj = ResourceManager.GetObject("Снимок экрана 2024-06-10 092108", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

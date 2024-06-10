@@ -22,12 +22,12 @@ namespace skires
         private void Form3_Load(object sender, EventArgs e)
         {
 
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=5958");
+            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skirus; Port=5432; User id=postgres; Password=1234");
             connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
-                using (var command = new NpgsqlCommand("select suename as \"Клиент\",the_capt as \"Инвентарь\",tip_number \"Уровень комнаты\",surname as \"Сотрудник\",data_beginn \"Дата приезда\",data_end \"Дата отъезда\",price \"Стоимость\"\r\nfrom services,staff,client,booking,inventory \r\nwhere services.id_staff=staff.id_staff \r\nand services.id_client=client.id_client \r\nand services.id_booking=booking.id_booking \r\nand inventory.id_inventory=services.id_inventory", conn))
+                using (var command = new NpgsqlCommand("select suename as \"Клиент\",tip_number \"Уровень комнаты\",surname as \"Сотрудник\",data_beginn \"Дата приезда\",data_end \"Дата отъезда\",price \"Стоимость\"\r\nfrom services,staff,client,booking \r\nwhere services.id_staff=staff.id_staff \r\nand services.id_client=client.id_client \r\nand services.id_booking=booking.id_booking", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -36,7 +36,7 @@ namespace skires
                         dataGridView1.DataSource = table;
                     }
                 }
-                using (var command = new NpgsqlCommand("select name,suename,otchestvo,name_p,clitizenship,telefon from client,level_0f_preparation where  client.id_preparation = level_0f_preparation.id_preparation", conn))
+                using (var command = new NpgsqlCommand("select name \"Имя\",suename as \"Фамилия\",otchestvo as \"Отчество\",clitizenship as \"Гражданство\",telefon as \"Телефон\" from client", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -45,7 +45,7 @@ namespace skires
                         dataGridView2.DataSource = table;
                     }
                 }
-                using (var command = new NpgsqlCommand("select name,surname,otchesto,dolgnost,qualification,telefon from staff where dolgnost = 'Инструктор'", conn))
+                using (var command = new NpgsqlCommand("select name as \"Имя\",surname as \"Фамилия\",otchesto as \"Отчество\",dolgnost as \"Должность\",qualification as \"Квалификация\",telefon as \"Телефон\" from staff where dolgnost = 'Уборщик'", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -54,7 +54,7 @@ namespace skires
                         dataGridView4.DataSource = table;
                     }
                 }
-                string q = "select surname from staff where dolgnost = 'Инструктор'";
+                string q = "select surname from staff where dolgnost = 'Уборщик'";
                 NpgsqlCommand com2 = new NpgsqlCommand(q, conn);
                 using (NpgsqlDataReader reader = com2.ExecuteReader())
                 {
@@ -98,12 +98,12 @@ namespace skires
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=5958");
+            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skirus; Port=5432; User id=postgres; Password=1234");
             connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
-                using (var command = new NpgsqlCommand("select suename,the_capt,tip_number,surname,data_beginn,data_end,price from services,staff,client,booking,inventory where services.id_staff=staff.id_staff and services.id_client=client.id_client and services.id_booking=booking.id_booking and inventory.id_inventory=services.id_inventory", conn))
+                using (var command = new NpgsqlCommand("select suename as \"Клиент\",tip_number \"Уровень комнаты\",surname as \"Сотрудник\",data_beginn \"Дата приезда\",data_end \"Дата отъезда\",price \"Стоимость\"\r\nfrom services,staff,client,booking \r\nwhere services.id_staff=staff.id_staff \r\nand services.id_client=client.id_client \r\nand services.id_booking=booking.id_booking", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -112,7 +112,7 @@ namespace skires
                         dataGridView1.DataSource = table;
                     }
                 }
-                using (var command = new NpgsqlCommand("select name,suename,otchestvo,name_p,clitizenship,telefon from client,level_0f_preparation where  client.id_preparation = level_0f_preparation.id_preparation", conn))
+                using (var command = new NpgsqlCommand("select name \"Имя\",suename as \"Фамилия\",otchestvo as \"Отчество\",clitizenship as \"Гражданство\",telefon as \"Телефон\" from client", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -121,7 +121,7 @@ namespace skires
                         dataGridView2.DataSource = table;
                     }
                 }
-                using (var command = new NpgsqlCommand("select name,surname,otchesto,dolgnost,qualification,telefon from staff where dolgnost = 'Инструктор'", conn))
+                using (var command = new NpgsqlCommand("select name as \"Имя\",surname as \"Фамилия\",otchesto as \"Отчество\",dolgnost as \"Должность\",qualification as \"Квалификация\",telefon as \"Телефон\" from staff where dolgnost = 'Уборщик'", conn))
                 {
                     using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
                     {
@@ -139,7 +139,7 @@ namespace skires
                 string selectedWork1 = comboBox1.SelectedItem.ToString();
                 string selectedWork2 = comboBox3.SelectedItem.ToString();
                 string selectedWork3 = comboBox4.SelectedItem.ToString();
-                var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
+                var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skirus; Port=5432; User id=postgres; Password=1234");
                 connStr.TrustServerCertificate = true;
                 using (var conn = new NpgsqlConnection(connStr.ToString()))
                 {

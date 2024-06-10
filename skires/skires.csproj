@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>skires</RootNamespace>
     <AssemblyName>skires</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -228,6 +229,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1675296546_gas-kvas-com-p-sneg-art-risunok-33.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Снимок экрана 2024-06-10 0921081.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
