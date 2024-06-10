@@ -16,7 +16,7 @@ namespace skires
     public partial class Form5 : Form
 
     {
-        private const string ConnectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
+        private const string ConnectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff";
         public Form5()
         {
             InitializeComponent();

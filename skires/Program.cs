@@ -16,7 +16,11 @@ namespace skires
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< Updated upstream
             Application.Run(new Form3());
+=======
+            Application.Run(new Form4());
+>>>>>>> Stashed changes
         }
     }
 }

@@ -35,7 +35,7 @@ namespace skires
 {
     public partial class Form4 : Form
     {
-        string ConnectionString = " Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
+        string ConnectionString = " Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff";
         public Form4()
         {
             InitializeComponent();
@@ -52,8 +52,7 @@ namespace skires
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff";
             string searchValue = textBox1.Text;
             string baseFileName;
             if (string.IsNullOrWhiteSpace(searchValue))
@@ -68,8 +67,8 @@ namespace skires
             using (NpgsqlConnection connection = new NpgsqlConnection(ConnectionString))
             {
                 connection.Open();
-                string query = "SELECT client.suename, client.name, client.otchestvo, inventory.the_capt, booking.tip_number, staff.surname, staff.name, staff.otchesto, data_beginn, data_end, price " +
-                               "FROM services JOIN client ON client.id_client = services.id_client JOIN inventory ON inventory.id_inventory = services.id_inventory JOIN booking ON booking.id_booking = services.id_booking JOIN staff ON staff.id_staff = services.id_staff WHERE data_end LIKE '%" + searchValue + "%';";
+                string query = "SELECT client.suename, client.name, client.otchestvo, booking.tip_number, staff.surname, staff.name, staff.otchesto, data_beginn, data_end, price " +
+                               "FROM services JOIN client ON client.id_client = services.id_client JOIN booking ON booking.id_booking = services.id_booking JOIN staff ON staff.id_staff = services.id_staff WHERE data_end LIKE '%" + searchValue + "%';";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@SearchValue", searchValue);
@@ -82,7 +81,7 @@ namespace skires
 
                         IRow titleRow = sheet.CreateRow(0);
                         titleRow.CreateCell(0).SetCellValue("Отчёт по оплате сервиса оказанного предприятием        ");
-                        string[] columnNames = new string[] { "Фамилия клиента   ", "Имя клиента   ", "Отчество клиента  ", "Тип инвентаря  ", "Тип номера  ", "Фамилия сотрудника  ", "Имя сотрудника  ", "Отчество сотрудника  ", "Дата въезда  ", "'Дата выезда  ", "Сумма к оплате  ", " ", "Сумма выручки общая:  " };
+                        string[] columnNames = new string[] { "Фамилия клиента   ", "Имя клиента   ", "Отчество клиента  ", "Тип номера  ", "Фамилия сотрудника  ", "Имя сотрудника  ", "Отчество сотрудника  ", "Дата въезда  ", "'Дата выезда  ", "Сумма к оплате  ", " ", "Сумма выручки общая:  " };
                         IRow headerRow = sheet.CreateRow(1);
                         for (int i = 0; i < columnNames.Length; i++)
                         {
@@ -117,12 +116,13 @@ namespace skires
                         }
 
                         IRow totalSumRow = sheet.CreateRow(dataTable.Rows.Count + 1);
-                        ICell totalSumCell = totalSumRow.CreateCell(10);
+
+                        ICell totalSumCell = totalSumRow.CreateCell(9); // Изменено с 10 на 9, чтобы поместиться в столбец J
                         totalSumCell.SetCellValue(totalSum);
 
-                        // Установка "Итого" в крайней левой ячейке "А"
                         ICell totalLabelCell = totalSumRow.CreateCell(0);
                         totalLabelCell.SetCellValue("Итого");
+
 
                         ICellStyle boldStyle = workbook.CreateCellStyle();
                         IFont boldFont = workbook.CreateFont();
@@ -140,7 +140,7 @@ namespace skires
                         {
                             workbook.Write(file);
                         }
-                        
+
 
                     }
                 }
@@ -418,7 +418,7 @@ namespace skires
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
             string query = "SELECT surname, name, otchesto,\r\n" +
                 "  SUM(price),\r\n " +
                 "      COUNT(id_client) FROM\r\n  " +
@@ -503,7 +503,7 @@ namespace skires
                 dataGridView1.Visible = true;
               //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "select client.suename, client.name, client.otchestvo, inventory.the_capt, services.data_beginn," +
                 " services.data_end, services.price, booking.tip_number from services inner join client on" +
@@ -619,7 +619,7 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "select dolgnost, surname, name, otchesto, qualification,  telefon, adrress, zp FROM staff WHERE dolgnost LIKE '%' || @input || '%'";
 
@@ -683,7 +683,7 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
             string query = "select surname, name, otchesto, dolgnost, qualification,  telefon, adrress, zp FROM staff WHERE surname LIKE '%' || @input || '%'";
 
@@ -747,10 +747,10 @@ namespace skires
                 dataGridView1.Visible = true;
                 //button6.Visible = true;
             }
-            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958;";
+            string connectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=998877fff;";
             // string connString = "Host=your_host;Port=your_port;Database=your_database;Username=your_username;Password=your_password";
-            string query = "SELECT client.suename, client.name, client.otchestvo, inventory.the_capt, booking.tip_number, staff.surname, staff.name, staff.otchesto, data_beginn, data_end, price " +
-                               "FROM services JOIN client ON client.id_client = services.id_client JOIN inventory ON inventory.id_inventory = services.id_inventory JOIN booking ON booking.id_booking = services.id_booking JOIN staff ON staff.id_staff = services.id_staff WHERE data_end  LIKE '%' || @input || '%'";
+            string query = "SELECT client.suename, client.name, client.otchestvo, booking.tip_number, staff.surname, staff.name, staff.otchesto, data_beginn, data_end, price " +
+                               "FROM services JOIN client ON client.id_client = services.id_client JOIN booking ON booking.id_booking = services.id_booking JOIN staff ON staff.id_staff = services.id_staff WHERE data_end  LIKE '%' || @input || '%'";
             string input = textBox1.Text; // Получаем ввод из текстового поля
 
             using (NpgsqlConnection conn = new NpgsqlConnection(ConnectionString))
@@ -771,32 +771,32 @@ namespace skires
                         //  dataGridView1.DataSource = dataTable.DefaultView;
                         dataGridView1.DataSource = dataTable;
 
-                        dataGridView1.Columns[0].Width = 80;
-                        dataGridView1.Columns[1].Width = 80;
-                        dataGridView1.Columns[2].Width = 80;
+                        dataGridView1.Columns[0].Width = 100;
+                        dataGridView1.Columns[1].Width = 100;
+                        dataGridView1.Columns[2].Width = 100;
                         dataGridView1.Columns[3].Width = 150;
                         dataGridView1.Columns[4].Width = 80;
                         dataGridView1.Columns[5].Width = 80;
                         dataGridView1.Columns[6].Width = 90;
                         dataGridView1.Columns[7].Width = 80;
                         dataGridView1.Columns[8].Width = 80;
-                        dataGridView1.Columns[9].Width = 80;
-                        dataGridView1.Columns[10].Width = 90;
-                     //   dataGridView1.Columns[7].Width = 100;
+                        dataGridView1.Columns[9].Width = 90;
+
+                        //   dataGridView1.Columns[7].Width = 100;
 
                         // Задание имен столбцов
                         dataGridView1.Columns[0].HeaderText = "Фамилия Клиентая";
                         dataGridView1.Columns[1].HeaderText = "Имя Клиента ";
                         dataGridView1.Columns[2].HeaderText = "Отчество Клиента ";
-                        dataGridView1.Columns[3].HeaderText = "Инвентарь";
-                        dataGridView1.Columns[4].HeaderText = "Тип номера";
-                        dataGridView1.Columns[5].HeaderText = "Фамилия Сотрудника";
-                        dataGridView1.Columns[6].HeaderText = "Имя Сотрудника ";
-                        dataGridView1.Columns[7].HeaderText = "Отчество Сотрудника ";
-                        dataGridView1.Columns[8].HeaderText = "Дата въезда ";
-                        dataGridView1.Columns[9].HeaderText = "Дата выезда ";
-                        dataGridView1.Columns[10].HeaderText = "Сумма к оплате";
-                       // dataGridView1.Columns[7].HeaderText = "Тип номера";
+
+                        dataGridView1.Columns[3].HeaderText = "Тип номера";
+                        dataGridView1.Columns[4].HeaderText = "Фамилия Сотрудника";
+                        dataGridView1.Columns[5].HeaderText = "Имя Сотрудника ";
+                        dataGridView1.Columns[6].HeaderText = "Отчество Сотрудника ";
+                        dataGridView1.Columns[7].HeaderText = "Дата въезда ";
+                        dataGridView1.Columns[8].HeaderText = "Дата выезда ";
+                        dataGridView1.Columns[9].HeaderText = "Сумма к оплате";
+                        // dataGridView1.Columns[7].HeaderText = "Тип номера";
 
                     }
                 }
@@ -877,6 +877,11 @@ namespace skires
                     }
                 }
             }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
