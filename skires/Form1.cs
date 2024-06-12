@@ -15,7 +15,12 @@ namespace skires
 {
     public partial class Form1 : Form
     {
-        private const string ConnectionString = "Host=localhost;Port=5432;Database=skires;Username=postgres;Password=5958";
+        private const string ConnectionString =
+            "Host=localhost" +
+            ";Port=5432" +
+            ";Database=skires" +
+            ";Username=postgres" +
+            ";Password=2242";
         public Form1()
         {
             InitializeComponent();
@@ -59,12 +64,6 @@ namespace skires
                                     f4.Show();
                                     this.Hide();
                                     break;
-                                case "Прокат":
-                                    Form5 f5 = new Form5();
-                                    f5.Show();
-                                    this.Hide();
-                                    break;
-
                                 default:
                                     MessageBox.Show("Траблы.");
                                     break;

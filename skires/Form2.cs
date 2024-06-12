@@ -15,6 +15,13 @@ namespace skires
 {
     public partial class Form2 : Form
     {
+        private const string connStr =
+           "Host=localhost" +
+           ";Port=5432" +
+           ";Database=skires" +
+           ";Username=postgres" +
+           ";Password=2242";
+
         public Form2()
         {
             InitializeComponent();
@@ -22,8 +29,6 @@ namespace skires
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -119,8 +124,6 @@ namespace skires
             string selectedWork1 = comboBox1.SelectedItem.ToString();
             string selectedWork2 = comboBox3.SelectedItem.ToString();
             string selectedWork3 = comboBox4.SelectedItem.ToString();
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -140,7 +143,6 @@ namespace skires
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -164,8 +166,6 @@ namespace skires
         private void button5_Click(object sender, EventArgs e)
         {
             string selectedWork1 = comboBox1.SelectedItem.ToString();
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -190,7 +190,6 @@ namespace skires
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -209,14 +208,8 @@ namespace skires
             }
         }
 
-       
-
-        
-
         private void button8_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -239,7 +232,6 @@ namespace skires
 
         private void button9_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -257,8 +249,6 @@ namespace skires
 
         private void button10_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -275,8 +265,6 @@ namespace skires
 
         private void button11_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skires; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 using (var command = new NpgsqlCommand("select tip_number \"Вид номера\", cost \"стоимость ночи\"\r\nfrom booking\r\n", conn))
@@ -290,13 +278,5 @@ namespace skires
                 }
             }
         }
-
-       
-
-       
-
-        
-
-        
     }
 }

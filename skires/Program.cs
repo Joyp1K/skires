@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace skires
@@ -16,11 +13,8 @@ namespace skires
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< Updated upstream
-            Application.Run(new Form3());
-=======
-            Application.Run(new Form4());
->>>>>>> Stashed changes
+
+            Application.Run(new Form1());
         }
     }
 }

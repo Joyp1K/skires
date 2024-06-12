@@ -14,6 +14,13 @@ namespace skires
 {
     public partial class Form3 : Form
     {
+        private const string connStr =
+           "Host=localhost" +
+           ";Port=5432" +
+           ";Database=skires" +
+           ";Username=postgres" +
+           ";Password=2242";
+
         public Form3()
         {
             InitializeComponent();
@@ -21,9 +28,6 @@ namespace skires
 
         private void Form3_Load(object sender, EventArgs e)
         {
-
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skirus; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -98,8 +102,6 @@ namespace skires
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skirus; Port=5432; User id=postgres; Password=1234");
-            connStr.TrustServerCertificate = true;
             using (var conn = new NpgsqlConnection(connStr.ToString()))
             {
                 conn.Open();
@@ -139,8 +141,6 @@ namespace skires
                 string selectedWork1 = comboBox1.SelectedItem.ToString();
                 string selectedWork2 = comboBox3.SelectedItem.ToString();
                 string selectedWork3 = comboBox4.SelectedItem.ToString();
-                var connStr = new NpgsqlConnectionStringBuilder("Server=localhost; Database=skirus; Port=5432; User id=postgres; Password=1234");
-                connStr.TrustServerCertificate = true;
                 using (var conn = new NpgsqlConnection(connStr.ToString()))
                 {
                     conn.Open();
